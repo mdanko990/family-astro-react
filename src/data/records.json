@@ -1,0 +1,24 @@
+[
+    {
+        "firstName": "Myroslava",
+        "patronym": "",
+        "lastName": "",
+        "maidenName": "Danko",
+        "gender": "F",
+        "type": "BIRTH",
+        "role": "child",
+        "isMain": true,
+        "status": "",
+        "age": "",
+        "ageGroup": "Y",
+        "date": "",
+        "place": "",
+        "comment": "",
+        "archive": "",
+        "fond": "",
+        "inventory": "",
+        "file": "",
+        "page": "",
+        "link": ""
+    }
+]

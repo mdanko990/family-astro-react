@@ -1,0 +1,15 @@
+---
+const { title, imageLink, classImage } = Astro.props;
+---
+
+<div class="card-body">
+    <figure class={classImage}>
+        <img
+          src={imageLink}
+          alt={title}
+          class="h-full" />
+    </figure>
+    <div class="card-title justify-center w-full mt-5">
+      {title}
+    </div>
+  </div>

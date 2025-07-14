@@ -1,0 +1,42 @@
+---
+import Card from "../../components/Card.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const technologies = [
+    {
+        title: "React",
+        imageLink: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
+    },
+    {
+        title: "Astro",
+        imageLink: "https://cdn.worldvectorlogo.com/logos/astrojs.svg"
+    },
+    {
+        title: "DaisyUI",
+        imageLink: "https://img.daisyui.com/images/daisyui/daisyui-logo-2000.png"
+    },
+    {
+        title: "Tailwindcss",
+        imageLink: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png"
+    },
+    {
+        title: "AG Grid",
+        imageLink: "https://cdn.brandfetch.io/ag-grid.com/fallback/lettermark/theme/dark/h/256/w/256/icon?c=1bfwsmEH20zzEfSNTed"
+    },
+    {
+        title: "Lucide",
+        imageLink: "https://lucide.dev/logo.light.svg"
+    }
+]
+---
+<MainLayout>
+    <ul class="flex gap-4 flex-wrap">
+        {
+            technologies.map((tech) => (
+                <li class="card bg-base-100 shadow-sm w-50">
+                <Card {...tech} classImage="h-30"/>
+            </li>
+        ))
+        }
+    </ul>
+</MainLayout>
