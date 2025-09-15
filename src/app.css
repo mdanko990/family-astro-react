@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+
+.svelte-flow {
+  --xy-background-color: #f7f9fb;
+}
