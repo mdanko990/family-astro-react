@@ -13,7 +13,7 @@ import Navbar from "@lib/components/Navbar.svelte";
 		<title>Tree Graph</title>
 	</head>
 	<body class="w-full h-full">
-		<Navbar client:load />
+		<Navbar isPinned={true} client:load />
 		<slot />
 	</body>
 </html>

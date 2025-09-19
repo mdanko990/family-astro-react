@@ -1,7 +1,8 @@
 <script>
-    let value = 'test'
+  import TreeGraph from "./TreeGraph.svelte";
 </script>
 
 <div>
-    SVELTE {value}
+    <!-- svelte-ignore attribute_illegal_colon -->
+    <TreeGraph />
 </div>
