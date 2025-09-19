@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "family-astro-react",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,20 +9,23 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.5",
     "@astrojs/svelte": "^7.1.1",
-    "@lucide/svelte": "^0.544.0",
-    "@xyflow/svelte": "^1.2.4",
-    "astro": "^5.13.7",
-    "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
-    "svelte": "^5.38.10",
-    "tailwind-merge": "^3.3.1",
-    "tailwind-variants": "^3.1.1",
-    "tw-animate-css": "^1.3.8",
+    "@tailwindcss/vite": "^4.1.13",
+    "@types/canvas-confetti": "^1.9.0",
+    "astro": "^5.13.8",
+    "canvas-confetti": "^1.9.3",
+    "svelte": "^5.39.2",
+    "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.0.0",
-    "tailwindcss": "^4.0.0"
+    "@internationalized/date": "^3.9.0",
+    "@lucide/svelte": "^0.515.0",
+    "bits-ui": "^2.10.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwind-variants": "^1.0.0",
+    "tw-animate-css": "^1.3.8"
   }
 }

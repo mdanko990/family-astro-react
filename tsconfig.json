@@ -1,11 +1,13 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": "astro/tsconfigs/base",
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
+    "baseUrl": ".",
+    "types": ["svelte"],
     "paths": {
-      "$lib": ["./src/lib"],
-      "$lib/*": ["./src/lib/*"]
+      "@lib": ["./src/lib"],
+      "@lib/*": ["./src/lib/*"],
     }
   }
 }

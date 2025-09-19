@@ -1,6 +1,6 @@
 ---
-import '../app.css';
-import Navbar from "../components/Navbar.astro";
+import '@lib/styles/global.css';
+import Navbar from "@lib/components/Navbar.svelte";
 ---
 
 <!doctype html>
@@ -12,8 +12,8 @@ import Navbar from "../components/Navbar.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Tree Graph</title>
 	</head>
-	<body>
-		<Navbar />
+	<body class="w-full h-full">
+		<Navbar client:load />
 		<slot />
 	</body>
 </html>
