@@ -1,0 +1,46 @@
+[
+  {
+    "id": "p1",
+    "firstname": "William",
+    "lastname": "Carter",
+    "gender": "M",
+    "birth": {
+      "date": "2002-05-12"
+    },
+    "isDraft": false
+  },
+  {
+    "id": "p5",
+    "firstname": "David",
+    "lastname": "Carter",
+    "gender": "M",
+    "birth": {
+      "date": "1972-07-14"
+    },
+    "marriages": [
+      {
+        "date": "1997-05-30",
+        "partnerId": "p4",
+        "childrenIds": ["p1"]
+      }
+    ],
+    "isDraft": false
+  },
+  {
+    "id": "p4",
+    "firstname": "Helen",
+    "lastname": "Bennett",
+    "gender": "F",
+    "birth": {
+      "date": "1975-08-30"
+    },
+    "marriages": [
+      {
+        "date": "1997-05-30",
+        "partnerId": "p5",
+        "childrenIds": ["p1"]
+      }
+    ],
+    "isDraft": false
+  }
+]
