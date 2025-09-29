@@ -51,15 +51,15 @@
     // doesn't get positioned off-screen.
     menu = {
       id: node.id,
-      top: event.clientY < clientHeight - 100 ? event.clientY - 10 : undefined,
-      left: event.clientX < clientWidth - 100 ? event.clientX - 200 : undefined,
+      top: event.clientY < clientHeight - 100 ? event.clientY : undefined,
+      left: event.clientX < clientWidth - 100 ? event.clientX - 255 : undefined,
       right:
         event.clientX >= clientWidth - 100
-          ? clientWidth - event.clientX
+          ? clientWidth - event.clientX - 500
           : undefined,
       bottom:
         event.clientY >= clientHeight - 100
-          ? clientHeight - event.clientY
+          ? clientHeight - event.clientY + 100
           : undefined,
     };
   };
