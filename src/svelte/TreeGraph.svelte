@@ -10,8 +10,8 @@
   import Loading from '$lib/components/Loading.svelte';
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import DraftsDrawer from '$lib/components/DraftsDrawer.svelte';
-    import ContextMenu from 'src/svelte/ContextMenu.svelte';
-  
+  import ContextMenu from 'src/svelte/ContextMenu.svelte';
+
   let data: Member[] = $state([]);
   let nodes: Node[] = $state.raw([]);
   let edges: Edge[] = $state.raw([]);
@@ -21,12 +21,13 @@
     isLoading = true
 		data = await fetch('data/persons.json').then((x) => x.json());
     
-    const { rawNodes, rawEdges } = transformData(data);
+    const { rawNodes, rawEdges, marriageEdges } = transformData(data);
 
     const layoutData = await layoutWithElk(rawNodes, rawEdges)
 
+    console.log(marriageEdges)
     nodes = layoutData.nodes
-    edges = layoutData.edges
+    edges = [...edges, ...marriageEdges]
 
     isLoading = false
   });
@@ -50,14 +51,14 @@
     // doesn't get positioned off-screen.
     menu = {
       id: node.id,
-      top: event.clientY < clientHeight - 200 ? event.clientY : undefined,
-      left: event.clientX < clientWidth - 200 ? event.clientX : undefined,
+      top: event.clientY < clientHeight - 100 ? event.clientY - 10 : undefined,
+      left: event.clientX < clientWidth - 100 ? event.clientX - 200 : undefined,
       right:
-        event.clientX >= clientWidth - 200
+        event.clientX >= clientWidth - 100
           ? clientWidth - event.clientX
           : undefined,
       bottom:
-        event.clientY >= clientHeight - 200
+        event.clientY >= clientHeight - 100
           ? clientHeight - event.clientY
           : undefined,
     };

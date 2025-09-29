@@ -15,6 +15,10 @@
 <div class="flex flex-col justify-center items-center border-1 rounded-sm p-1 w-[100px] h-[40px] text-[8px]">
   <div>{data.firstname} {data.lastname}</div>
   <div>{renderYear(data.birthDate)} - {renderYear(data.deathDate)}</div>
-  <Handle type="target" position={Position.Bottom} id="parentBottom"/>
-  <Handle type="source" position={Position.Top} id="childTop"/>
+  <Handle type="target" position={Position.Right} id="partnerRight" isConnectable={false}/>
+  <Handle type="source" position={Position.Left} id="partnerLeft" isConnectable={false}/>
+  <Handle type="target" position={Position.Left} id="partnerLeft" isConnectable={false}/>
+  <Handle type="source" position={Position.Right} id="partnerRight" isConnectable={false}/>
+  <Handle type="target" position={Position.Bottom} id="parentBottom" isConnectable={false}/>
+  <Handle type="source" position={Position.Top} id="childTop" isConnectable={false}/>
 </div>

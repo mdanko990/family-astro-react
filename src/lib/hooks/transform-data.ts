@@ -11,7 +11,7 @@ const getMarriageEdgeId = (node, partnerId) => {
 
 export const transformData = (data: Member[]) => {
   const personNodes: Node[] = [];
-  // const marriageNodes: Node[] = [];
+  const marriageEdges: Edge[] = [];
   const edges: Edge[] = [];
 
   // 1) Add person nodes
@@ -30,8 +30,7 @@ export const transformData = (data: Member[]) => {
     member.marriages.forEach((m) => {
       if (!m.partnerId) return;
 
-      // const mid = getMarriageNodeId(member, m.partnerId);
-      // // if marriage node doesn't exist yet → add
+      // if marriage node doesn't exist yet → add
       // if (!marriageNodes.find((n) => n.id === mid)) {
       //   marriageNodes.push({
       //     id: mid,
@@ -42,16 +41,17 @@ export const transformData = (data: Member[]) => {
       // }
 
       // 3) Partner → marriage edges
-      // const marriageEdgeId = getMarriageEdgeId(member, m.partnerId);
-      // if(!edges.find(e=>e.id===marriageEdgeId)) {
-      //   edges.push({
-      //     id: marriageEdgeId,
-      //     source: m.partnerId,
-      //     target: member.id,
-      //     sourceHandle: member.gender === "M" ? "partnerLeft" : "partnerRight",
-      //     targetHandle: member.gender === "M" ? "marriageRight" : "marriageLeft"
-      //   });
-      // }
+      const marriageEdgeId = getMarriageEdgeId(member, m.partnerId);
+      if(!marriageEdges.find(e=>e.id===marriageEdgeId)) {
+        marriageEdges.push({
+          id: marriageEdgeId,
+          animated: true,
+          source: m.partnerId,
+          target: member.id,
+          sourceHandle: member.gender === "M" ? "partnerLeft" : "partnerRight",
+          targetHandle: member.gender === "M" ? "partnerRight" : "partnerLeft"
+        });
+      }
 
       // 4) Parents → children edges
       for (const cid of m.childrenIds ?? []) {
@@ -72,5 +72,6 @@ export const transformData = (data: Member[]) => {
   return {
     rawNodes: personNodes, //nodes,
     rawEdges: edges,
+    marriageEdges: marriageEdges
   };
 };
