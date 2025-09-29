@@ -27,8 +27,7 @@
 
     console.log(marriageEdges)
     nodes = layoutData.nodes
-    edges = [...edges, ...marriageEdges]
-
+    edges = [...layoutData.edges, ...marriageEdges]
     isLoading = false
   });
 
@@ -36,6 +35,7 @@
 
   let menu: {
     id: string;
+    data: any;
     top?: number;
     left?: number;
     right?: number;
@@ -51,6 +51,7 @@
     // doesn't get positioned off-screen.
     menu = {
       id: node.id,
+      data: node.data,
       top: event.clientY < clientHeight - 100 ? event.clientY : undefined,
       left: event.clientX < clientWidth - 100 ? event.clientX - 255 : undefined,
       right:
@@ -99,6 +100,7 @@
         {#if menu}
           <ContextMenu
             onclick={handlePaneClick}
+            data={menu.data}
             id={menu.id}
             top={menu.top}
             left={menu.left}

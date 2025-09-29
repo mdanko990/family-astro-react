@@ -1,12 +1,12 @@
 <script lang="ts">
-    import { Button } from "$lib/components/ui/button";
+  import { Button } from "$lib/components/ui/button";
   import DatePicker from "$lib/components/ui/DatePicker.svelte";
   import { Input } from "$lib/components/ui/input/index.js";
   import { Label } from "$lib/components/ui/label/index.js";
   import * as RadioGroup from "$lib/components/ui/radio-group/index.js";
   import * as Select from "$lib/components/ui/select";
 
-  let { members, submit } = $props()
+  let { defaultValues, members, submit } = $props()
   let formData = $state({
     gender: "M",
     firstname: "",
@@ -16,9 +16,10 @@
     deathDate: "",
     parentIds: [],
     children: [],
+    ...defaultValues
   })
-  const males = $state.raw(members.filter(member=>member.gender==='M'))
-  const females = $state.raw(members.filter(member=>member.gender==='F'))
+  const males = $state.raw(members.filter(member=>member.data.gender==='M'))
+  const females = $state.raw(members.filter(member=>member.data.gender==='F'))
 
   const triggerContentFather = $derived(
     members.find((m) => m.id === formData.parentIds[0])?.label
@@ -26,7 +27,7 @@
   const triggerContentMother = $derived(
     members.find((m) => m.id === formData.parentIds[1])?.label
   );
-
+  console.log('formdata', formData, defaultValues)
   const handleSubmit = (e) => {
     e.preventDefault();
     if(formData.birthDate) formData.birthDate = formData.birthDate.toString()

@@ -42,7 +42,7 @@ export const transformData = (data: Member[]) => {
 
       // 3) Partner → marriage edges
       const marriageEdgeId = getMarriageEdgeId(member, m.partnerId);
-      if(!marriageEdges.find(e=>e.id===marriageEdgeId)) {
+      if(!checkIfEdgeIdExists(marriageEdges,marriageEdgeId)) {
         marriageEdges.push({
           id: marriageEdgeId,
           animated: true,
@@ -75,3 +75,37 @@ export const transformData = (data: Member[]) => {
     marriageEdges: marriageEdges
   };
 };
+
+
+const getParentChildEdgeId = (childId, parentId) => `e:${parentId}->${childId}`
+
+const checkIfEdgeIdExists = (edges, id) => !edges.find(e=>e.id===id)
+
+export const addParentChildConnection = (edges, parentId, childId) => {
+  const parentChildId = getParentChildEdgeId(childId, parentId)
+  if(checkIfEdgeIdExists(edges, parentChildId)) {
+    return ({
+      id: getParentChildEdgeId(childId, parentId),
+      source: childId,
+      target: parentId,
+      sourceHandle: "childTop",
+      targetHandle: "parentBottom"
+    })
+  }
+  return null
+}
+
+export const addPartnerConnection = (edges, currentPartner, partnerId) => {
+const marriageEdgeId = getMarriageEdgeId(currentPartner, partnerId)
+  if(checkIfEdgeIdExists(edges, partnerId)) {
+    return ({
+      id: marriageEdgeId,
+      animated: true,
+      source: partnerId,
+      target: currentPartner.id,
+      sourceHandle: currentPartner.gender === "M" ? "partnerLeft" : "partnerRight",
+      targetHandle: currentPartner.gender === "M" ? "partnerRight" : "partnerLeft"
+    })
+  }
+  return null
+}

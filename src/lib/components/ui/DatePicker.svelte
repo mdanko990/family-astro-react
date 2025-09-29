@@ -3,7 +3,8 @@
  import {
   DateFormatter,
   type DateValue,
-  getLocalTimeZone
+  getLocalTimeZone,
+ parseDate
  } from "@internationalized/date";
  import { cn } from "$lib/utils.js";
  import { buttonVariants } from "$lib/components/ui/button/index.js";
@@ -30,7 +31,7 @@
   )}
  >
   <CalendarIcon />
-  {value ? df.format(value.toDate(getLocalTimeZone())) : ""}
+  {value ? df.format(value.toDate(getLocalTimeZone())) : null}
  </Popover.Trigger>
  <Popover.Content bind:ref={contentRef} class="w-auto p-0">
   <Calendar type="single" bind:value />
