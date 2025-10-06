@@ -6,18 +6,8 @@
   import * as RadioGroup from "$lib/components/ui/radio-group/index.js";
   import * as Select from "$lib/components/ui/select";
 
-  let { defaultValues, members, submit } = $props()
-  let formData = $state({
-    gender: "M",
-    firstname: "",
-    patronym: "",
-    lastname: "",
-    birthDate: "",
-    deathDate: "",
-    parentIds: [],
-    children: [],
-    ...defaultValues
-  })
+  let { defaultValues = new Member(), members, submit } = $props()
+  let formData = $state(defaultValues)
   const males = $state.raw(members.filter(member=>member.data.gender==='M'))
   const females = $state.raw(members.filter(member=>member.data.gender==='F'))
 

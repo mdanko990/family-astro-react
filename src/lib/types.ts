@@ -8,14 +8,14 @@ type Marriage = Event & {
   childrenIds?: string[];
 }
 
-type Member = {
+class Member {
   id: string;
-  gender: 'F' | 'M';
+  gender: 'F' | 'M' = 'M';
   firstname: string;
   patronym?: string;
   lastname: string;
-  birth?: Story,
-  death?: Story,
-  marriages?: Marriage[],
+  birth?: Story;
+  death?: Story;
+  marriages?: Marriage[];
   isDraft: boolean
 };

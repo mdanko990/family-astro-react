@@ -11,17 +11,22 @@
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import DraftsDrawer from '$lib/components/DraftsDrawer.svelte';
   import ContextMenu from 'src/svelte/ContextMenu.svelte';
+    import fetcher from '$lib/hooks/fetcher';
 
   let data: Member[] = $state([]);
   let nodes: Node[] = $state.raw([]);
   let edges: Edge[] = $state.raw([]);
   let isLoading: boolean = $state(false);
 
+  
+  
 	onMount(async () => {
     isLoading = true
+    const persons = await fetcher('/api/persons')
+    console.log(persons)
 		data = await fetch('data/persons.json').then((x) => x.json());
     
-    const { rawNodes, rawEdges, marriageEdges } = transformData(data);
+    const { rawNodes, rawEdges, marriageEdges } = transformData(persons);
 
     const layoutData = await layoutWithElk(rawNodes, rawEdges)
 
